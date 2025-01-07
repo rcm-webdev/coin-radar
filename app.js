@@ -9,6 +9,7 @@ const fetchCryptoData = async (crypto) => {
       throw new Error(`Cryptocurrency not found: ${response.status}`);
     }
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log("Error: ", error);
@@ -27,7 +28,7 @@ document.getElementById("cryptoForm").addEventListener("submit", async (e) => {
     const data = await fetchCryptoData(crypto);
     if (data[crypto]) {
       resultDiv.innerHTML = `
-          <h2>${crypto.toUpperCase()}</h2>
+          <h2>${crypto.toUpperCase()} </h2>
           <p>Price: ${data[crypto].usd}</p>
           <p>24-hour change: ${data[crypto].usd_24h_change.toFixed(2)}%</p>
         `;
