@@ -53,18 +53,20 @@ document.getElementById("cryptoForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const query = document.getElementById("cryptoInput").value.toLowerCase();
   const resultDiv = document.getElementById("cryptoResult");
-  resultDiv.innerHTML = "Loading...";
+  resultDiv.innerHTML = `<span class="loading loading-dots loading-lg"></span>`;
 
   try {
     const cryptoId = await fetchCryptoId(query);
     const { name, symbol, price, change } = await fetchCryptoData(cryptoId);
     resultDiv.innerHTML = `
-    <h2>${name} (${symbol})</h2>
-    <p>Price: $${price.toFixed(2)}</p>
-    <p>24-hour change: ${change ? change.toFixed(2) : "N/A"}%</p>
+    <h2 class='text-accent font-bold'>${name} (${symbol})</h2>
+    <p class='text-success font-semibold'>Price: $${price.toFixed(2)}</p>
+    <p>24-hour change: <span class='text-warning'> ${
+      change ? change.toFixed(2) : "N/A"
+    }% </span></p>
   `;
   } catch (error) {
     console.log("Error: ", error);
-    resultDiv.innerHTML = "Error fetching data. Cryptocurrency not found.";
+    resultDiv.innerHTML = `<p class='text-error'>${error.message}</p>`;
   }
 });
