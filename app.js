@@ -1,7 +1,34 @@
 //fetch cryptocurrency data from the CoinGecko API
+const fetchCryptoId = async (query) => {
+  const url = `https://api.coingecko.com/api/v3/search?query=${query}`;
 
-const fetchCryptoData = async (crypto) => {
-  const url = `https://api.coingecko.com/api/v3/coins/${crypto}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Search failed: ${response.status}`);
+    }
+    const data = await response.json();
+
+    // Find a matching ID for the query
+    const result = data.coins.find(
+      (coin) =>
+        coin.id.toLowerCase() === query.toLowerCase() ||
+        coin.symbol.toLowerCase() === query.toLowerCase()
+    );
+
+    if (result) {
+      return result.id; // Return the CoinGecko ID for the cryptocurrency
+    } else {
+      throw new Error("Cryptocurrency not found");
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+    throw error;
+  }
+};
+
+const fetchCryptoData = async (id) => {
+  const url = `https://api.coingecko.com/api/v3/coins/${id}`;
 
   try {
     const response = await fetch(url);
@@ -24,12 +51,13 @@ const fetchCryptoData = async (crypto) => {
 // Event Listener for form submission
 document.getElementById("cryptoForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const crypto = document.getElementById("cryptoInput").value.toLowerCase();
+  const query = document.getElementById("cryptoInput").value.toLowerCase();
   const resultDiv = document.getElementById("cryptoResult");
   resultDiv.innerHTML = "Loading...";
 
   try {
-    const { name, symbol, price, change } = await fetchCryptoData(crypto);
+    const cryptoId = await fetchCryptoId(query);
+    const { name, symbol, price, change } = await fetchCryptoData(cryptoId);
     resultDiv.innerHTML = `
     <h2>${name} (${symbol})</h2>
     <p>Price: $${price.toFixed(2)}</p>
