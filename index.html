@@ -1,25 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="forest">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CoinRadar</title>
     <description content="A simple cryptocurrency price tracker" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body>
-    <main>
-      <h1>CoinRadar</h1>
-      <p>A tool to locate and monitor cryptocurrencies by name or symbol.</p>
-      <form id="cryptoForm">
-        <input
-          type="text"
-          id="cryptoInput"
-          placeholder="Enter a cryptocurrency"
-        />
-        <button type="submit">Get Price</button>
-      </form>
-      <div id="cryptoResult"></div>
+    <main class="hero min-h-screen bg-base-200">
+      <!-- first div -->
+
+      <div class="text-center flex flex-col gap-4 p-4">
+        <div class="flex items-center justify-center gap-2">
+          <img src="public/assets/icon.png" alt="icon-logo" class="h-12 w-12" />
+          <h1 class="text-accent font-bold text-4xl">CoinRadar</h1>
+        </div>
+        <p class="text-secondary font-semibold text-xl">
+          A tool to locate and monitor cryptocurrencies by name or symbol.
+        </p>
+        <form id="cryptoForm">
+          <label class="input input-bordered flex items-center gap-2">
+            <input
+              type="text"
+              id="cryptoInput"
+              class="grow"
+              placeholder="Enter a cryptocurrency"
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="h-4 w-4 opacity-70"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </label>
+
+          <button class="btn" type="submit">Get Price</button>
+        </form>
+        <div id="cryptoResult"></div>
+      </div>
     </main>
     <script src="app.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>
