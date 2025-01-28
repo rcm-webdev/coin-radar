@@ -8,9 +8,9 @@ CoinRadar is a lightweight application that allows users to search for cryptocur
 
 ## How It's Made:
 
-Tech used: HTML, CSS and JavaScript
+Tech used: HTML, CSS, and JavaScript.
 
-This application was built from the ground up without any frameworks to keep things simple and focused. It features:
+This application was built from the ground up without frameworks to keep things simple and focused. It features:
 
 - HTML for structuring
 - Tailwindcss and Daisyui for simple styling
@@ -29,13 +29,13 @@ Key features:
 While this is an MVP, there are several areas for future improvement:
 
 - Caching results: cache frequently searched results locally to minimize API calls
-- Pagnation/search suggestions: show a list of suggestions as users type to guid their searches
-- simplicity, I used a CDN to include Tailwind CSS and DaisyUI, but I would switch to npm for dependency management
+- Pagination/search suggestions: show a list of suggestions as users type to guide their searches
+- For simplicity, I used a CDN to include Tailwind CSS and DaisyUI, but I would switch to npm for dependency management
 
 ---
 
 ## Lessons Learned:
 
-- API integration: This MVP was a great opportunity to deepen my understanding of how to work with APIs and handle asynchornous reqs with fetch
-- Dynamic DOM manipulation: It was good time to review DOM manipulation - dynamically updating the DOM in res to user input and API res
-- Error Handling: Read the docs!! Reading through the docs allowed me to handle different types of errors (e.g. invalid input, API failures, etc)
+- API integration: This MVP was an excellent opportunity to deepen my understanding of how to work with APIs and handle asynchronous requests with fetch
+- Dynamic DOM manipulation: It was a good time to review DOM manipulation - dynamically updating the DOM in res to user input and API res
+- Error Handling: Read the docs!! Reading through the docs allowed me to handle errors (e.g., invalid input, API failures, etc.)
